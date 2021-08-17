@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin flex($flex-direction, $justify-content: center, $align-items: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $flex-direction;
+}
+
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+$color-main: #996633;
+$color-black: #10161e;
+$color-bg: #f8f8f8;
+$color-white: #ffffff;
