@@ -1,96 +1,122 @@
 {
-  "seller": [
+  "seller_list": [
     {
       "name": "최홍자",
-      "id": 1,
+      "seller_id": 1,
       "profile_image": "images/sellerImg.jpg",
       "category": ["cold", "dry"]
     },
     {
       "name": "과나",
-      "id": 2,
+      "seller_id": 2,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "할리보",
-      "id": 3,
+      "seller_id": 3,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "누을",
-      "id": 5,
+      "seller_id": 5,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "카광",
-      "id": 6,
+      "seller_id": 6,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "읏디의 고양이타이쿤",
-      "id": 7,
+      "seller_id": 7,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "집사인생 용시쿠",
-      "id": 8,
+      "seller_id": 8,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "오킹",
-      "id": 9,
+      "seller_id": 9,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     },
     {
       "name": "꼬부기아빠",
-      "id": 4,
+      "seller_id": 4,
       "profile_image": "images/sellerImg.jpg"
     }
    
+  ],
+  "product_list": [
+    {
+      "product_id": 1,
+      "name": "Hongja Symbol X_θ X Tshirt",
+      "price": "15000",
+      "categroy": 1,
+      "image_url": "images/Product1.jpg",
+      "quantity": 3
+    },
+    {
+      "product_id": 2,
+      "name": "Hongja X_θ X XXX Flip B",
+      "price": "59000",
+      "categroy": 1,
+      "image_url": "images/Product1.jpg",
+      "quantity": 0
+    },
+    {
+      "product_id": 3,
+      "name": "Hongja acrylic key ring",
+      "price": "3000",
+      "categroy": 2,
+      "image_url": "images/Product2.jpg",
+      "quantity": 2
+    }
   ]
 }

@@ -1,46 +1,34 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import { API } from '../config';
 
-const SellerProductsList = props => {
-  const [productList, setProductList] = useState([]);
-
-  useEffect(() => {
-    fetch(`${API.PRODUCT}`, {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(result => {
-        setProductList(result.product_list);
-      });
-  }, []);
-
+const SellerProductsList = ({ productList, searchWord }) => {
   return (
     <AllWrap>
-      <SellerProductsTotalBox>
+      <SellerProductsTotalBox searchWord={searchWord}>
         <SellerProductsTotal>상품 ({productList.length})</SellerProductsTotal>
       </SellerProductsTotalBox>
       <SellerProductsBoxWrap>
-        {productList.map((item, index) => {
-          return (
-            <SellerProductsBox key={index}>
-              <SellerProductsImageBox>
-                <SellerProductsImg src={item.image_url} alt="productImage" />
-                {item.quantity === 0 && <SoldOutTag>매진</SoldOutTag>}
-              </SellerProductsImageBox>
+        {productList?.map((item, index) => (
+          <SellerProductsBox key={index}>
+            <SellerProductsImageBox>
+              <SellerProductsImg
+                isSoldOut={item.quantity === 0}
+                src={item.image}
+                alt="prodctImage"
+              />
+              {item.quantity === 0 && <SoldOutTag>매진</SoldOutTag>}
+            </SellerProductsImageBox>
 
-              <SellerProductsInfoBox>
-                <SellerProductsName>{item.name}</SellerProductsName>
-                <SellerProductsPrice>
-                  ₩{' '}
-                  {(Math.floor(item.price / 1000) * 1000).toLocaleString(
-                    'ko-KR'
-                  )}
-                </SellerProductsPrice>
-              </SellerProductsInfoBox>
-            </SellerProductsBox>
-          );
-        })}
+            <SellerProductsInfoBox>
+              <SellerProductsName>{item.name}</SellerProductsName>
+              <SellerProductsPrice>
+                ₩{' '}
+                {(Math.floor(item.price / 1000) * 1000).toLocaleString('ko-KR')}
+              </SellerProductsPrice>
+            </SellerProductsInfoBox>
+          </SellerProductsBox>
+        ))}
       </SellerProductsBoxWrap>
     </AllWrap>
   );
@@ -59,10 +47,12 @@ const SellerProductsTotalBox = styled.div`
   height: 45px;
   display: flex;
   align-items: center;
+  margin-top: ${({ searchWord }) => (searchWord ? '60px' : null)};
 `;
 
 const SellerProductsTotal = styled.div`
   font-size: 20px;
+  font-weight: bold;
   margin-left: 8px;
 `;
 
@@ -81,6 +71,10 @@ const SellerProductsImageBox = styled.div`
   position: relative;
   width: 232px;
   height: 232px;
+  :hover {
+    cursor: pointer;
+    border: 3px solid white;
+  }
 `;
 
 const SellerProductsImg = styled.img`
@@ -88,6 +82,7 @@ const SellerProductsImg = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 2px;
+  opacity: ${props => (props.isSoldOut ? 0.2 : 1)};
 `;
 
 const SoldOutTag = styled.div`
