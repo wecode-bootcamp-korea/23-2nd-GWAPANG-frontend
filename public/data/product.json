@@ -1,0 +1,70 @@
+{
+  "product_list": [
+    {
+      "product_id": 1,
+      "name": "Hongja Symbol X_θ X Tshirt",
+      "price": "15000",
+      "categroy": 1,
+      "image_url": "images/Product1.jpg",
+      "quantity": 3
+    },
+    {
+      "product_id": 2,
+      "name": "Hongja X_θ X XXX Flip B",
+      "price": "59000",
+      "categroy": 1,
+      "image_url": "images/Product1.jpg",
+      "quantity": 0
+    },
+    {
+      "product_id": 3,
+      "name": "Hongja acrylic key ring",
+      "price": "3000",
+      "categroy": 2,
+      "image_url": "images/Product2.jpg",
+      "quantity": 2
+    },
+    {
+      "product_id": 4,
+      "name": "Hongja 1st anniv X Line Hoodie",
+      "price": "19000",
+      "categroy": 4,
+      "image_url": "images/Product1.jpg",
+      "quantity": 2
+    },
+    {
+      "product_id": 5,
+      "name": "Hongja XXX Ring Chain 4mm",
+      "price": "23000",
+      "categroy": 4,
+      "image_url": "images/Product1.jpg",
+      "quantity": 1
+    },
+    {
+      "product_id": 6,
+      "name": "Hongja X Mouse Pad B",
+      "price": "4000",
+      "categroy": 4,
+      "image_url": "images/Product2.jpg",
+      "quantity": 2
+    },
+    {
+      "product_id": 7,
+      "name": "Hongja triple X Tshirt",
+      "price": "15000",
+      "categroy": 4,
+      "image_url": "images/Product1.jpg",
+      "quantity": 0
+    },
+    {
+      "product_id": 5,
+      "name": "Hongja triple X Ball cap",
+      "price": "112000",
+      "categroy": 5,
+      "image_url": "images/Product2.jpg",
+      "quantity": 6
+    }
+  ],
+  "categroy": ["냉동", "냉장", "건과일", "서울", "대구", "부산"],
+  "image_url": "/images/ProductDetail/mockProduct.png"
+}
