@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function Nav() {
+  const [log, setLog] = useState(false);
+  const [color, setColor] = useState({ color: 'grey' });
   const history = useHistory();
+  const logoutWithNav = () => {
+    if (localStorage.getItem('TOKEN')) {
+      localStorage.removeItem('TOKEN');
+      alert('다음에 또 방문해주세요.🍉');
+      setLog(!log);
+    } else {
+      console.log('error');
+    }
+  };
   const goToMain = () => {
     history.push('/');
   };
@@ -20,15 +32,19 @@ function Nav() {
     <NavWrapper>
       <NavInnerContainer>
         <MainLogo src="/images/GwapangLogo.png" alt="logo" onClick={goToMain} />
-        <MenuSeleted onClick={goToMain}>홈</MenuSeleted>
-        <MenuUnSeleted onClick={goToSeller}>셀러</MenuUnSeleted>
+        <MenuSelect type="radio" onClick={goToMain}>
+          홈
+        </MenuSelect>
+        <MenuSelect type="radio" onClick={goToSeller}>
+          셀러
+        </MenuSelect>
         <IconContainer>
-          <Icon
-            src="https://s3.marpple.co/files/u_1396787/2021/5/original/db2a15fcf8f4913f2079caa31f0864ec068f7b951.svg"
-            alt="cartIcon"
+          <IconUpload
+            src="https://s3.marpple.co/files/u_1396787/2021/5/original/d42ba6734d06cc9bf5c4f751d32fc6d370f1f4fc4.svg"
+            alt="uploadIcon"
             onClick={goToCart}
           />
-          <Icon
+          <IconLogin
             src="https://s3.marpple.co/files/u_1396787/2021/5/original/327c52e14972934562d9f11f2f0acc390f7306e18.svg"
             alt="userIcon"
             onClick={goToLogin}
@@ -42,19 +58,21 @@ function Nav() {
 export default Nav;
 
 const NavWrapper = styled.nav`
-  position: sticky;
+  position: absolute;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
-  padding: 2rem 5.71429rem 2rem 5.71429rem;
+  padding: 0 5.714285714285714rem;
+  margin-bottom: 10px;
   height: 70px;
   width: 100%;
-  /*  */
 `;
 const NavInnerContainer = styled.div`
   display: flex;
   width: 100%;
+  padding: 0 80px;
   justify-content: flex-start;
 `;
 
@@ -67,10 +85,12 @@ const MainLogo = styled.img`
     3 auto; */
 `;
 
-const MenuSeleted = styled.span`
+const MenuSelect = styled.div`
+  background-color: white;
+  border: 0px;
   vertical-align: middle;
-  color: mediumblue;
-  font-size: 18px;
+  color: green;
+  font-size: 23px;
   font-weight: 700;
   padding-top: 5px;
   margin: auto 0;
@@ -87,8 +107,13 @@ const MenuUnSeleted = styled.span`
   cursor: pointer;
 `;
 
-const Icon = styled.img`
-  margin: auto 15px;
+const IconLogin = styled.img`
+  margin-left: 25px;
+  cursor: pointer;
+`;
+
+const IconUpload = styled.img`
+  margin-left: 25px;
   cursor: pointer;
 `;
 

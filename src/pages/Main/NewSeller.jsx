@@ -1,18 +1,27 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { API } from '../config';
+import { API } from '../../config';
+import axios, { get } from 'axios';
 
-const SellerList = ({ sellerList }) => {
+const NewSeller = () => {
+  const [newSeller, setnewSeller] = useState([]);
   const history = useHistory();
+  useEffect(() => {
+    axios
+      .get(API.SELLERLST + `?order_by=id`)
+      .then(result => {
+        setnewSeller(result.data.seller);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }, []);
   return (
-    <AllWrap>
-      <SellerTotalBox>
-        <SellerTotal>셀러 ({sellerList?.length})</SellerTotal>
-      </SellerTotalBox>
-      <SellerBoxWrap>
-        {sellerList?.map((item, index) => {
-          return (
+    <SellerWrapper>
+      {newSeller?.map((item, index) => (
+        <>
+          {index < 6 ? (
             <SellerBox
               key={index}
               onClick={() => {
@@ -27,37 +36,19 @@ const SellerList = ({ sellerList }) => {
                 </div>
               </SellerNameBox>
             </SellerBox>
-          );
-        })}
-      </SellerBoxWrap>
-    </AllWrap>
+          ) : null}
+        </>
+      ))}
+    </SellerWrapper>
   );
 };
+export default NewSeller;
 
-const AllWrap = styled.div`
+const SellerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 70px;
-`;
-
-const SellerTotalBox = styled.div`
-  width: 1190px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-`;
-
-const SellerTotal = styled.p`
-  padding-left: 5px;
-  font-size: 20px;
-`;
-
-const SellerBoxWrap = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-
-  width: 1189px;
+  width: 100%;
+  justify-content: space-between;
 `;
 
 const SellerBox = styled.div`
@@ -94,5 +85,3 @@ const SellerNameBox = styled.div`
     color: gray;
   }
 `;
-
-export default SellerList;

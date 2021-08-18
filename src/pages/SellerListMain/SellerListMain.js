@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import SellerProducts from '../../components/SellerProducts';
 import { API } from '../../config';
 import axios, { get } from 'axios';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 const SellerListMain = props => {
   const [sellerList, setSellerList] = useState([]);

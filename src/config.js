@@ -14,6 +14,7 @@ export const API = {
 
   SEARCHLST: `${BASE_URL2}/products/search`,
   SELLERLST: `${BASE_URL2}/products/seller`,
+  REVIEWLST: `${BASE_URL2}/reviews/recent`,
   SELLERPRODUCT: `${BASE_URL2}/products/product`,
   SIGNIN: `${BASE_URL2}/users/signin`,
 };

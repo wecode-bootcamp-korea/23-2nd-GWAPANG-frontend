@@ -4,16 +4,9 @@ import axios, { GET, POST, DELETE, PUT } from 'axios';
 import { API } from '../../../config';
 
 function Login(props) {
-  const KakaoLogin = () => {
+  const loginWithKakao = () => {
     window.Kakao.Auth.login({
       success: authObj => {
-        // axios
-        //   .GET(API.LOGIN, {
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //       Authorization: authObj.access_token,
-        //     },
-        //   })
         axios(API.LOGIN, {
           method: 'GET',
           headers: {
@@ -34,7 +27,7 @@ function Login(props) {
   };
 
   //로그아웃처리를 어떻게할지 아직 못정해서 일단 숨겨두었습니다.
-  const KakaoLogout = () => {
+  const logoutWithKakao = () => {
     if (window.Kakao.Auth.getAccessToken()) {
       window.Kakao.API.request({
         url: '/v1/user/unlink',
@@ -71,7 +64,7 @@ function Login(props) {
           아이디가 없으신가요?
           <p>회원가입</p>
         </SignUp>
-        <KakaoLoginButton onClick={KakaoLogin}>
+        <KakaoLoginButton onClick={loginWithKakao}>
           <KakaoSymbol
             src="https://www.brandi.co.kr/static/21.02.09/images/icon-kakao-login-26-pt.svg"
             alt=""
@@ -79,7 +72,7 @@ function Login(props) {
           <span>카카오로 10초만에 시작하기</span>
         </KakaoLoginButton>
       </LoginContainer>
-      <LogoutSubmitBtn onClick={KakaoLogout}></LogoutSubmitBtn>
+      <LogoutSubmitBtn onClick={logoutWithKakao}></LogoutSubmitBtn>
     </Wrapper>
   );
 }
