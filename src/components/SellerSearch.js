@@ -4,16 +4,29 @@ import styled from 'styled-components';
 // import { API } from '../config';
 
 const SellerSearch = props => {
-  const clickCheck = e => {
-    console.log('여기 찍힘');
-    console.log(e.target.className);
+  const [searchWord, setSearchWord] = useState([]);
+
+  const searchReady = keyword => {
+    setSearchWord(keyword);
   };
 
   return (
     <AllWrap>
       <SearchBox>
-        <SearchInput type="text" placeholder="셀러명을 검색해 주세요" />
-        <i className="fas fa-apple-alt fa-2x" onClick={e => clickCheck(e)}></i>
+        <SearchInput
+          type="text"
+          placeholder="셀러명을 검색해 주세요"
+          onChange={e => searchReady(e.target.value)}
+          onKeyPress={e => {
+            if (e.key === 'Enter') {
+              props.searchStart(searchWord);
+            }
+          }}
+        />
+        <i
+          className="fas fa-apple-alt fa-2x"
+          onClick={() => props.searchStart(searchWord)}
+        ></i>
       </SearchBox>
     </AllWrap>
   );
