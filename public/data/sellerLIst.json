@@ -1,0 +1,45 @@
+{
+  "seller_list": [
+    {
+      "name": "최홍자",
+      "seller_id": 1,
+      "image_url": "images/sellerImg.jpg",
+      "category" : ["cold","dry"]
+    },
+    {
+      "name": "과나",
+      "seller_id": 2,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "할리보",
+      "seller_id": 3,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "누을",
+      "seller_id": 5,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "카광",
+      "seller_id": 6,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "읏디의 고양이타이쿤",
+      "seller_id": 7,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "집사인생 용시쿠",
+      "seller_id": 8,
+      "image_url": "images/sellerImg.jpg"
+    }
+  ]
+}
