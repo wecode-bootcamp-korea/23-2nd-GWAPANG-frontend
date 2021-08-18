@@ -25,8 +25,8 @@ const SellerProductsList = props => {
           return (
             <SellerProductsBox key={index}>
               <SellerProductsImageBox>
-                <SellerProductsImg src={item.image_url} alt="" />
-                {item.quantity === 0 ? <SoldOutTag>매진</SoldOutTag> : null}
+                <SellerProductsImg src={item.image_url} alt="productImage" />
+                {item.quantity === 0 && <SoldOutTag>매진</SoldOutTag>}
               </SellerProductsImageBox>
 
               <SellerProductsInfoBox>

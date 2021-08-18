@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useHistory } from 'react';
-import styled from 'styled-components';
 import SellerList from '../../components/SellerList';
 import SellerTag from '../../components/SellerTag';
 import SellerSearch from '../../components/SellerSearch';
