@@ -2,7 +2,48 @@ import styled from 'styled-components';
 import React, { useState, useEffect, useRef } from 'react';
 import { SVG } from './svg';
 
-const tagList = [
+const SellerTag = ({ sellerList, tagFilter }) => {
+  // useEffect(() => {
+  //   inputTag.current.setAttribute('checked', true);
+  // }, []);
+
+  const [tagInit, setTagInit] = useState('All');
+  return (
+    <SellerTagWrap sellerList={sellerList}>
+      {sellerList !== undefined && (
+        <SellerTagTitle>여기가 바로 과일 맛집!!!</SellerTagTitle>
+      )}
+      <SellerTagBox>
+        {TAG_LIST.map((item, index) => (
+          <div key={index}>
+            <TagInput
+              type="radio"
+              id={item.tagId}
+              value={item.value}
+              name="radio"
+              onClick={e => {
+                tagFilter(e.target.value);
+                setTagInit(null);
+                // tagSend(e);
+                // handleTagInit();
+              }}
+              // ref={item.ref}
+              checked={tagInit === item.value}
+            />
+            <TagLabel for={item.tagId}>
+              {item.svgName}
+              {item.tagName}
+            </TagLabel>
+          </div>
+        ))}
+      </SellerTagBox>
+    </SellerTagWrap>
+  );
+};
+
+export default SellerTag;
+
+const TAG_LIST = [
   {
     tagId: 'radio1',
     tagName: '전체',
@@ -40,49 +81,6 @@ const tagList = [
     svgName: SVG.IMPORT,
   },
 ];
-const SellerTag = ({ sellerList, tagFilter }) => {
-  // useEffect(() => {
-  //   inputTag.current.setAttribute('checked', true);
-  // }, []);
-
-  const [tagInit, setTagInit] = useState('All');
-  const tagSend = e => {
-    tagFilter(e.target.value);
-  };
-  const handleTagInit = () => {
-    setTagInit(null);
-  };
-  return (
-    <SellerTagWrap sellerList={sellerList}>
-      {sellerList !== undefined && (
-        <SellerTagTitle>여기가 바로 과일 맛집!!!</SellerTagTitle>
-      )}
-      <SellerTagBox>
-        {tagList.map((item, index) => (
-          <div key={index}>
-            <TagInput
-              type="radio"
-              id={item.tagId}
-              value={item.value}
-              name="radio"
-              onClick={e => {
-                tagSend(e);
-                handleTagInit();
-              }}
-              // ref={item.ref}
-              checked={tagInit === item.value ? true : null}
-            />
-            <TagLabel for={item.tagId}>
-              {item.svgName}
-              {item.tagName}
-            </TagLabel>
-          </div>
-        ))}
-      </SellerTagBox>
-    </SellerTagWrap>
-  );
-};
-
 const SellerTagWrap = styled.div`
   height: 100%;
   display: flex;
@@ -150,5 +148,3 @@ const TagInput = styled.input`
     }
   }
 `;
-
-export default SellerTag;
