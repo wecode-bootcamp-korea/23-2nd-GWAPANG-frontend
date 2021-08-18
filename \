@@ -1,0 +1,21 @@
+Modify: 셀러 프로덕트 conflicts 해결
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# interactive rebase in progress; onto fa5b9f6
+# Last command done (1 command done):
+#    pick f406b8a Add: 샐러 리스트페이지 내 셀러리스트 레이아웃 구현 완료(리뷰 수정) - 리뷰사항 반영 완료
+# Next command to do (1 remaining command):
+#    squash d137936 Modify: master - feature/sellerProducts conflicts 해결 - 2
+# You are currently rebasing branch 'feature/sellerProducts' on 'fa5b9f6'.
+#
+# Changes to be committed:
+#	new file:   public/images/product1.jpg
+#	new file:   public/images/product2.jpg
+#	modified:   src/Routes.js
+#	modified:   src/components/SellerProducts.js
+#	new file:   src/pages/SellerDetail/SellerDetail.js
+#	modified:   src/pages/SellerListMain/SellerListMain.js
+#
