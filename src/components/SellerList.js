@@ -3,40 +3,28 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { API } from '../config';
 
-const SellerList = props => {
-  const [sellerList, setSellerList] = useState([]);
-
-  useEffect(() => {
-    fetch(`${API.SELLER}`, {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(result => {
-        setSellerList(result.seller_list);
-      });
-  }, []);
-
+const SellerList = ({ sellerList }) => {
   const history = useHistory();
 
   return (
     <AllWrap>
       <SellerTotalBox>
-        <SellerTotal>셀러 ({sellerList.length})</SellerTotal>
+        <SellerTotal>셀러 ({sellerList?.length})</SellerTotal>
       </SellerTotalBox>
       <SellerBoxWrap>
-        {sellerList.map((item, index) => {
+        {sellerList?.map((item, index) => {
           return (
             <SellerBox
               key={index}
               onClick={() => {
-                history.push('/sellerList');
+                history.push('/seller-detail');
               }}
             >
               <SellerImg src="images/sellerImg.jpg" alt="sellerThumbNail" />
               <SellerNameBox>
                 <div>{item.name}</div>
                 <div>
-                  <i className="far fa-heart"></i>
+                  <i className="far fa-heart" value="false"></i>
                 </div>
               </SellerNameBox>
             </SellerBox>
@@ -83,6 +71,17 @@ const SellerImg = styled.img`
   height: 190px;
   object-fit: cover;
   border-radius: 50px;
+
+  transform: scale(1);
+  /* -webkit-transform: scale(1); */
+
+  transition: all 0.1s ease-in-out;
+
+  :hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    /* -webkit-transform: scale(1.1); */
+  }
 `;
 
 const SellerNameBox = styled.div`

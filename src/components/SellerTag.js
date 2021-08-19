@@ -3,25 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { SVG } from './svg';
 
 const SellerTag = props => {
-  return (
-    <SellerTagWrap>
-      <SellerTagTitle>여기가 바로 과일 맛집!!!</SellerTagTitle>
-      <SellerTagBox>
-        <SellerTags>{SVG.REFRIGERATOR}냉장</SellerTags>
-
-        <SellerTags>
-          {SVG.FROZEN}
-          냉동
-        </SellerTags>
-        <SellerTags>{SVG.DRY}건조</SellerTags>
-        <SellerTags>
-          {SVG.MAP}
-          국내산
-        </SellerTags>
-        <SellerTags>{SVG.IMPORT}수입산</SellerTags>
-      </SellerTagBox>
-    </SellerTagWrap>
-  );
+  return;
 };
 
 const SellerTagWrap = styled.div`
@@ -30,7 +12,8 @@ const SellerTagWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: ${props => (props.sellerList !== undefined ? '80px' : '15px')};
+  margin-bottom: 25px;
 `;
 
 const SellerTagTitle = styled.div`
@@ -39,6 +22,7 @@ const SellerTagTitle = styled.div`
   font-weight: bold;
   margin-left: 20px;
   margin-bottom: 20px;
+  justify-content: center;
 `;
 
 const SellerTagBox = styled.div`
@@ -57,7 +41,7 @@ const SellerTags = styled.button`
   padding-right: 30px;
   margin-left: 10px;
   font-size: large;
-
+  background-color: ${props => (props.value ? 'blue' : '#f8f8f8')};
   svg {
     margin-right: 5px;
   }

@@ -4,16 +4,11 @@ import styled from 'styled-components';
 // import { API } from '../config';
 
 const SellerSearch = props => {
-  const clickCheck = e => {
-    console.log('여기 찍힘');
-    console.log(e.target.className);
-  };
-
   return (
     <AllWrap>
       <SearchBox>
         <SearchInput type="text" placeholder="셀러명을 검색해 주세요" />
-        <i className="fas fa-apple-alt fa-2x" onClick={e => clickCheck(e)}></i>
+        <i className="fas fa-apple-alt fa-2x"></i>
       </SearchBox>
     </AllWrap>
   );

@@ -4,7 +4,7 @@
       "name": "최홍자",
       "seller_id": 1,
       "image_url": "images/sellerImg.jpg",
-      "category" : ["cold","dry"]
+      "category": ["cold", "dry"]
     },
     {
       "name": "과나",
@@ -39,6 +39,236 @@
     {
       "name": "집사인생 용시쿠",
       "seller_id": 8,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "오킹",
+      "seller_id": 9,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
+      "image_url": "images/sellerImg.jpg"
+    },
+    {
+      "name": "꼬부기아빠",
+      "seller_id": 4,
       "image_url": "images/sellerImg.jpg"
     }
   ]
