@@ -8,7 +8,6 @@ import axios from 'axios';
 import SellerTag from '../../components/SellerTag';
 
 const SellerDetail = props => {
-  console.log(props.match.params.name);
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
