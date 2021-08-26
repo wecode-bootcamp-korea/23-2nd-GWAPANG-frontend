@@ -48,10 +48,9 @@ function Footer() {
   );
 }
 export default Footer;
-
 const FooterWrapper = styled.footer`
-  position: fixed;
   bottom: 0px;
+  width: 100%;
   justify-content: center;
   align-items: center;
   padding: 2rem 5.71429rem 2rem 5.71429rem;
@@ -60,7 +59,6 @@ const FooterWrapper = styled.footer`
   width: 100%;
   font-size: 13px;
 `;
-
 const FooterInnerWrapper = styled.div`
   display: inline-block;
   width: 100%;
@@ -70,7 +68,6 @@ const LanguageSelection = styled.ul`
   display: flex;
   margin-bottom: 20px;
 `;
-
 const LangKo = styled.li`
   float: left;
   font-weight: 600;
@@ -105,11 +102,9 @@ const ExtraContact = styled.p`
   font-weight: 400;
   margin: 20px 0 0 0;
 `;
-
 const Icon = styled.img`
   margin: 0 20px 0 0;
 `;
-
 const Copyright = styled.p`
   display: block;
   color: #828282;

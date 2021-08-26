@@ -6,7 +6,6 @@ import { ColorExtractor } from 'react-color-extractor';
 
 const SellerList = ({ sellerList }) => {
   const history = useHistory();
-  // https://i.imgur.com/OCyjHNF.jpg
   return (
     <AllWrap>
       <SellerTotalBox>

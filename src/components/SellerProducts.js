@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { API } from '../config';
 
 const SellerProductsList = ({ productList, searchWord }) => {
+  const history = useHistory();
   return (
     <AllWrap>
       <SellerProductsTotalBox searchWord={searchWord}>
