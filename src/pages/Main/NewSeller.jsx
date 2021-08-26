@@ -48,10 +48,11 @@ const SellerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: space-between;
 `;
 
 const SellerBox = styled.div`
-  margin: 20px 10px 70px 0;
+  margin: 20px 0 70px 0;
 `;
 
 const SellerImg = styled.img`

@@ -15,11 +15,13 @@ function Login(props) {
           },
         }).then(res => {
           alert('과즙팡팡🍒 과팡에 방문해주셔서 감사합니다.🍊');
+          console.log(res);
           localStorage.setItem('TOKEN', res.data.token);
           props.history.push('/');
         });
       },
       fail: error => {
+        console.log('이것도???');
         alert('아이디, 비밀번호를 다시 확인해주세요.🍌');
         alert(JSON.stringify(error));
       },
