@@ -1,3 +1,19 @@
 {
-  "image": null
+  "id" : "1",
+  "name" : "WeFARM",
+  "images" : [{ "url" : "images/sellerImg.jpg", 
+                "rate" : 5, 
+                "user_id" : "jinsoo" }, 
+              { "url" : "https://rawrow.openhost.cafe24.com/web/upload/product/21Q3/REYECASE/r.com/02.-INTRO.jpg", 
+                "rate" : 2, 
+                "user_id" : "holo123"}, 
+              { "url" : "https://rawrow.openhost.cafe24.com/web/upload/product/21Q3/REYECASE/r.com/04.-DETAILS.jpg", 
+                "rate" : 3, 
+                "user_id" : "holo1234"}],
+  "desc" : "안녕하세요. 이정도면 충분합니다.",
+  "title" : "제주도 아보카도",
+  "price" : "26000",
+  "quantity" : "366",
+  "origin" : "국내산",
+  "storage" : "건조"
 }

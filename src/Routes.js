@@ -8,6 +8,8 @@ import Main from './pages/Main/Main';
 import SellerListMain from './pages/SellerListMain/SellerListMain';
 import SellerDetail from './pages/SellerDetail/SellerDetail';
 import SellerUpload from './pages/SellerUpload/SellerUpload';
+import ProductDetail from './pages/Product/ProductDetail';
+import ProductReview from './pages/Product/ProdcutReview';
 
 class Routes extends React.Component {
   render() {
@@ -17,6 +19,7 @@ class Routes extends React.Component {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/product-review" component={ProductReview} />
           <Route exact path="/seller-list-main" component={SellerListMain} />
           <Route exact path="/seller-upload" component={SellerUpload} />
           <Route
@@ -24,6 +27,8 @@ class Routes extends React.Component {
             path="/seller-detail/:id/:name"
             component={SellerDetail}
           />
+          <Route exact path="/product-detail" component={ProductDetail} />
+          <Route exact path="/main" component={Main} />
         </Switch>
         <Footer />
       </Router>

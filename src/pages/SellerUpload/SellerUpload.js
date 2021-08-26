@@ -46,12 +46,16 @@ function SellerUpload() {
         'Content-Type': 'multipart/form-data',
       },
     };
-    axios.post('http://10.58.2.254:8000/products/upload', formData, header);
+    axios.post(
+      'http://10.58.2.254:8000/products?product_id=97',
+      formData,
+      header
+    );
   };
 
   useEffect(() => {
     axios
-      .get('http://10.58.2.254:8000/products/upload?product_id=50', {
+      .get('http://10.58.2.254:8000/products?product_id=97', {
         headers: {
           Authorization:
             'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.KjgqHsnmB7K95fHLKWPIsylZ3f4KEeLuCHkvVutkDdw',
@@ -71,6 +75,7 @@ function SellerUpload() {
       .catch(err => console.log(err));
   }, []);
 
+  console.log(imageForUpload);
   return (
     <SellerUploadSection>
       <InfoHeader>
