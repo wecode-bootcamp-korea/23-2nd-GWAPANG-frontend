@@ -63,7 +63,7 @@ const SellerProductsBoxWrap = styled.div`
 `;
 
 const SellerProductsBox = styled.div`
-  margin: 20px 10px 70px 0;
+  margin: 20px 5rem 70px 0;
 `;
 
 const SellerProductsImageBox = styled.div`

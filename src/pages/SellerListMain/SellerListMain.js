@@ -49,32 +49,15 @@ const SellerListMain = props => {
         console.log(error.message);
       });
   };
-
-  const isTagChecked = checked => {
-    return checked;
-  };
-
-  console.log(searchWord);
-  console.log(productList);
   console.log(searchWord);
   return (
-    <div>
+    <>
       <SellerSearch searchStart={searchStart} />
-      {isTagChecked === true ||
-        (searchWord === '' && (
-          <SellerTag
-            sellerList={sellerList}
-            tagFilter={tagFilter}
-            isTagChecked={isTagChecked}
-          />
-        ))}
+      {searchWord === '' && sellerList?.length > 0 && (
+        <SellerTag sellerList={sellerList} tagFilter={tagFilter} />
+      )}
       <SearchNullWrap>
-        {sellerList?.length < 1 && (
-          <SearchNull>샐러가 존재하지 않습니다.</SearchNull>
-        )}
-      </SearchNullWrap>
-      <SearchNullWrap>
-        {sellerList?.length === 0 && productList?.length === 0 && (
+        {sellerList.length === 0 && productList.length === 0 && (
           <SearchNull>검색결과가 없습니다.</SearchNull>
         )}
       </SearchNullWrap>
@@ -82,7 +65,7 @@ const SellerListMain = props => {
       {productList?.length > 0 && (
         <SellerProducts productList={productList} searchWord={searchWord} />
       )}
-    </div>
+    </>
   );
 };
 
@@ -94,8 +77,7 @@ const SearchNullWrap = styled.div`
 `;
 const SearchNull = styled.div`
   width: 1190px;
-  margin-top: 150px;
-  margin-bottom: 150px;
+  margin-top: 100px;
 `;
 
 export default SellerListMain;
