@@ -179,7 +179,7 @@ function SellerUpload() {
 export default SellerUpload;
 
 const SellerUploadSection = styled.section`
-  margin: 35px auto;
+  margin: 100px auto 35px;
   width: 1024px;
 `;
 

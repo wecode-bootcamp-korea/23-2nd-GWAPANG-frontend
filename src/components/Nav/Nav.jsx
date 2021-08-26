@@ -23,10 +23,10 @@ function Nav() {
     history.push('/login');
   };
   const goToCart = () => {
-    history.push('/cart');
+    history.push('/seller-upload');
   };
   const goToSeller = () => {
-    history.push('/seller');
+    history.push('/seller-list-main');
   };
   return (
     <NavWrapper>

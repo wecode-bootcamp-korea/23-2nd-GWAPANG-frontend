@@ -78,8 +78,10 @@ function Login(props) {
 }
 
 const Wrapper = styled.div`
+  margin-top: 100px;
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 `;
 
 const LoginContainer = styled.div`
@@ -166,6 +168,7 @@ const LoginSubmitBtn = styled.button`
 `;
 
 const LogoutSubmitBtn = styled.button`
+  opacity: 0;
   width: 10px;
   height: 10px;
 `;

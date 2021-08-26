@@ -2,12 +2,16 @@ import styled from 'styled-components';
 import React, { useState, useEffect, useRef } from 'react';
 import { SVG } from './svg';
 
-const SellerTag = ({ sellerList, tagFilter }) => {
+const SellerTag = ({ sellerList, tagFilter, isTagChecked }) => {
   // useEffect(() => {
   //   inputTag.current.setAttribute('checked', true);
   // }, []);
 
   const [tagInit, setTagInit] = useState('All');
+
+  useEffect(() => {
+    isTagChecked(true);
+  }, []);
   return (
     <SellerTagWrap sellerList={sellerList}>
       {sellerList !== undefined && (
@@ -24,11 +28,12 @@ const SellerTag = ({ sellerList, tagFilter }) => {
               onClick={e => {
                 tagFilter(e.target.value);
                 setTagInit(null);
+                isTagChecked(e.target.checked);
                 // tagSend(e);
                 // handleTagInit();
               }}
               // ref={item.ref}
-              checked={tagInit === item.value}
+              checked={tagInit === item.value ? true : null}
             />
             <TagLabel for={item.tagId}>
               {item.svgName}
