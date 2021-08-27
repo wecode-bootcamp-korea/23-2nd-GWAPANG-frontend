@@ -48,7 +48,7 @@ function SellerUpload(props) {
       },
     };
     axios.post(`${API.UPLOAD}`, formData, header).then(res => {
-      props.history.push(`/products/${res.data.PRODUCT_ID}`);
+      props.history.push(`/product-detail/${res.data.PRODUCT_ID}`);
     });
     alert('업로드가 완료되었습니다.');
   };

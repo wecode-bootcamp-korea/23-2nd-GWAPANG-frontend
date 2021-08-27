@@ -43,6 +43,7 @@ function ProductReview(props) {
     axios.post(`${API.REVIEW}/${id}`, formData, header);
     window.location.reload();
     props.setModal(0);
+    console.log(formData);
   };
 
   console.log(rate);

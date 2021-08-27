@@ -25,9 +25,6 @@ function ProductDetail(props) {
         setData(result.data.RESULT[0]);
       })
       .catch(err => console.log(err));
-    axios.get(`${API.REVIEW}/${id}/comment`).then(result => {
-      setReview(result.data.RESULT);
-    });
   }, []);
 
   useEffect(() => {
@@ -41,7 +38,7 @@ function ProductDetail(props) {
     return data.product_price * stock;
   };
 
-  console.log(review);
+  console.log(data.product_review);
   return (
     <>
       <BodyContainer>
@@ -70,7 +67,7 @@ function ProductDetail(props) {
           </Menu>
           {productInfo === 'story' && (
             <ProductDesc>
-              {review?.map((item, index) => (
+              {data.product_review?.map((item, index) => (
                 <ReviewContainer>
                   <ReviewImage
                     alt="reviewImage"
