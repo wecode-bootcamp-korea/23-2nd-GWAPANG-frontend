@@ -57,7 +57,7 @@ const SellerListMain = props => {
         <SellerTag sellerList={sellerList} tagFilter={tagFilter} />
       )}
       <SearchNullWrap>
-        {sellerList.length === 0 && productList.length === 0 && (
+        {sellerList?.length === 0 && productList?.length === 0 && (
           <SearchNull>검색결과가 없습니다.</SearchNull>
         )}
       </SearchNullWrap>
@@ -77,8 +77,8 @@ const SearchNullWrap = styled.div`
 `;
 const SearchNull = styled.div`
   width: 1190px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 300px;
+  margin-bottom: 300px;
 `;
 
 export default SellerListMain;

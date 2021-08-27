@@ -5,6 +5,7 @@ import { API } from '../config';
 
 const SellerProductsList = ({ productList, searchWord }) => {
   const history = useHistory();
+  console.log(productList);
   return (
     <AllWrap>
       <SellerProductsTotalBox searchWord={searchWord}>
@@ -13,7 +14,9 @@ const SellerProductsList = ({ productList, searchWord }) => {
       <SellerProductsBoxWrap>
         {productList?.map((item, index) => (
           <SellerProductsBox key={index}>
-            <SellerProductsImageBox>
+            <SellerProductsImageBox
+              onClick={() => history.push(`/product-detail/${item.id}`)}
+            >
               <SellerProductsImg
                 isSoldOut={item.quantity === 0}
                 src={item.image}

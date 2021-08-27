@@ -35,7 +35,7 @@ const SellerSearch = props => {
 const AllWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 150px;
 `;
 const SearchBox = styled.div`
   width: 1190px;

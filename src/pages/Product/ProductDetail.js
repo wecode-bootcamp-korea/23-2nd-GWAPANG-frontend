@@ -3,18 +3,16 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import ProductReview from './ProdcutReview';
+import { API } from '../../../src/config';
 
-function ProductDetail() {
-  const [quantity, setQuantity] = useState('');
+function ProductDetail(props) {
+  const { id } = props.match.params;
+  const [stock, setstock] = useState('');
   const [productInfo, setProductInfo] = useState('story');
   const [data, setData] = useState({});
+  const [review, setReview] = useState([]);
   const [modal, setModal] = useState('');
-
-  let price = 36000;
-
-  const handleTotalPrice = () => {
-    return price * quantity;
-  };
+  const [reviewData, setReviewData] = useState('');
 
   const handleProductInfo = e => {
     setProductInfo(e.target.id);
@@ -22,29 +20,32 @@ function ProductDetail() {
 
   useEffect(() => {
     axios
-      .get('/data/SellerUpload.json')
+      .get(`${API.DETAIL}/${id}`)
       .then(result => {
-        console.log(result);
-        setData(result.data);
+        setData(result.data.RESULT[0]);
       })
       .catch(err => console.log(err));
   }, []);
 
   useEffect(() => {
-    if (Number(quantity) > Number(data.quantity)) {
+    if (Number(stock) > Number(data.product_stock)) {
       alert('그만 담아 주세요!!! 너무 많아요!!');
-      setQuantity(data.quantity);
+      setstock(data.product_stock);
     }
-  }, [quantity]);
+  }, [stock]);
 
-  console.log(data.images);
+  const handleTotalPrice = () => {
+    return data.product_price * stock;
+  };
+
+  console.log(data.product_review);
   return (
     <>
       <BodyContainer>
         <ProdcutSection>
           <UploadContainer>
             <CarouselImage>
-              <ProductImage alt="shirt" src={data.images?.[0].url} />
+              <ProductImage alt="shirt" src={data.product_image?.[0]} />
             </CarouselImage>
           </UploadContainer>
           <Menu>
@@ -66,16 +67,20 @@ function ProductDetail() {
           </Menu>
           {productInfo === 'story' && (
             <ProductDesc>
-              {data.images?.map((item, index) => (
-                <ReviewContainer order={index}>
+              {data.product_review?.map((item, index) => (
+                <ReviewContainer>
                   <ReviewImage
                     alt="reviewImage"
-                    src={item.url}
-                    key={index}
+                    src={item.review_image}
+                    key={item.review_id}
+                    onClick={e => {
+                      setModal(2);
+                      setReviewData(review.review_id);
+                    }}
                   ></ReviewImage>
                   <RateContainer>
-                    <ReviewId>{item.user_id}</ReviewId>
-                    <Rate>{'★'.repeat(item.rate)}</Rate>
+                    <ReviewId>{item.review_writer}</ReviewId>
+                    <Rate>{'★'.repeat(item.grade)}</Rate>
                   </RateContainer>
                 </ReviewContainer>
               ))}
@@ -83,43 +88,41 @@ function ProductDetail() {
           )}
           {productInfo === 'desc' && (
             <ProductDesc>
-              <Desc>{data.desc}</Desc>
-              {data.images?.map((item, index) => (
-                <ProductImage alt="shirt" key={index} src={item.url} />
+              <Desc>{data.product_description}</Desc>
+              {data.product_image.slice(1).map((item, index) => (
+                <ProductImage alt="shirt" key={index} src={item} />
               ))}
             </ProductDesc>
           )}
         </ProdcutSection>
         <DetailForm>
           <DetailSection>
-            <Title>{data.title}</Title>
-            <Price>{price.toLocaleString('ko-KR')}원</Price>
+            <Title>{data.product_name}</Title>
+            <Price>
+              {parseInt(data.product_price)?.toLocaleString('ko-KR')}원
+            </Price>
             <CategoryContainer>
-              <Category>{data.origin}</Category>
-              <Category>{data.storage}</Category>
+              <Category>{data.product_origin}</Category>
+              <Category>{data.product_storage}</Category>
             </CategoryContainer>
             <Seller>
-              <SellerImage
-                alt="seller"
-                src="	https://i.pinimg.com/originals/de/17/d5/de17d59a4ae56f3c832873a5c0e7dd9e.png"
-              />
+              <SellerImage alt="seller" src={data.seller_image} />
               <SellerDesc>
                 <SellerDescTop>Grown By</SellerDescTop>
-                <SellerDescBot>{data.name}</SellerDescBot>
+                <SellerDescBot>{data.seller_name}</SellerDescBot>
               </SellerDesc>
             </Seller>
-            <QuantityContainer>
-              {data.quantity} /
+            <StockContainer>
+              {data.product_stock} /
               <Increase
                 type="number"
-                value={quantity}
-                // max={data.quantity}
+                value={stock}
                 onChange={e => {
-                  setQuantity(e.target.value);
+                  setstock(e.target.value);
                 }}
               />
-              <QuantityShow> : 수량</QuantityShow>
-            </QuantityContainer>
+              <StockShow> : 수량</StockShow>
+            </StockContainer>
             <TotalPrice>
               {handleTotalPrice().toLocaleString('ko-KR')}원
             </TotalPrice>
@@ -130,30 +133,27 @@ function ProductDetail() {
           </DetailSection>
         </DetailForm>
       </BodyContainer>
-      {modal === 1 && <ProductReview setModal={setModal} />}
+      {modal === 1 && (
+        <ProductReview id={id} setModal={setModal}></ProductReview>
+      )}
     </>
   );
 }
 
 export default ProductDetail;
 
-// const ModalOverlay = styled.div`
-//   position: fixed;
-//   background: black;
-//   opacity: 0.5;
-// `;
-
 const RateContainer = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const ReviewContainer = styled.div`
   position: relatvie;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  max-width: 50%;
   border: 8px solid #fafafa;
   height: 100%;
 `;
@@ -232,7 +232,7 @@ const MenuBtnDesc = styled.input`
   }
 `;
 
-const QuantityShow = styled.div`
+const StockShow = styled.div`
   font-size: 40px;
   padding-right: 13px;
 `;
@@ -279,7 +279,7 @@ const CategoryContainer = styled(Title.withComponent('div'))`
   display: flex;
 `;
 
-const QuantityContainer = styled(Title.withComponent('div'))`
+const StockContainer = styled(Title.withComponent('div'))`
   display: flex;
 
   :hover > input {
@@ -305,11 +305,11 @@ const ShopBtn = styled(Title.withComponent('div'))`
 `;
 
 const ProductDesc = styled.div`
+  flex-wrap: wrap;
   padding: 20px;
   background-color: #fafafa;
   margin-top: 15px;
   display: flex;
-  flex-flow: column wrap;
 `;
 
 const Menu = styled.div`
@@ -390,7 +390,9 @@ const BodyContainer = styled.div`
   max-width: 1360px;
 `;
 
-const ProdcutSection = styled.section``;
+const ProdcutSection = styled.section`
+  width: 739.156px;
+`;
 
 const DetailSection = styled.div`
   position: sticky;

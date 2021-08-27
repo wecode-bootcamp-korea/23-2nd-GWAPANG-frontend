@@ -4,8 +4,10 @@ import axios from 'axios';
 import styled from 'styled-components';
 import ImageUploader from './ImageUploader';
 import UploadCategory from './UploadCategory';
+import { API } from '../../config';
 
-function SellerUpload() {
+function SellerUpload(props) {
+  const { id } = props.match.params;
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [price, setPrice] = useState('');
@@ -41,24 +43,21 @@ function SellerUpload() {
     formData.append('storage', storage);
     const header = {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.KjgqHsnmB7K95fHLKWPIsylZ3f4KEeLuCHkvVutkDdw',
+        Authorization: localStorage.getItem('TOKEN'),
         'Content-Type': 'multipart/form-data',
       },
     };
-    axios.post(
-      'http://10.58.2.254:8000/products?product_id=97',
-      formData,
-      header
-    );
+    axios.post(`${API.UPLOAD}`, formData, header).then(res => {
+      props.history.push(`/product-detail/${res.data.PRODUCT_ID}`);
+    });
+    alert('업로드가 완료되었습니다.');
   };
 
   useEffect(() => {
     axios
-      .get('http://10.58.2.254:8000/products?product_id=97', {
+      .get(`${API}/products/${id}`, {
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.KjgqHsnmB7K95fHLKWPIsylZ3f4KEeLuCHkvVutkDdw',
+          Authorization: localStorage.getItem('TOKEN'),
         },
       })
       .then(result => {
@@ -75,7 +74,6 @@ function SellerUpload() {
       .catch(err => console.log(err));
   }, []);
 
-  console.log(imageForUpload);
   return (
     <SellerUploadSection>
       <InfoHeader>
@@ -106,7 +104,7 @@ function SellerUpload() {
             value={title}
           />
           <CountWord>{title && title.length} / 40</CountWord>
-          <InvalidNameList href="/">
+          <InvalidNameList href="https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=25&ccfNo=1&cciNo=1&cnpClsNo=3">
             <u>거래금지 품목</u>
           </InvalidNameList>
         </InputNameContainer>
@@ -179,7 +177,7 @@ function SellerUpload() {
 export default SellerUpload;
 
 const SellerUploadSection = styled.section`
-  margin: 35px auto;
+  margin: 100px auto 35px;
   width: 1024px;
 `;
 

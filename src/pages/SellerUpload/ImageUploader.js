@@ -89,7 +89,6 @@ const LiContainer = styled.li`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  /* width: 1024px */
   padding: 32px 0;
   border-bottom: 1px solid grey;
 `;

@@ -10,7 +10,7 @@ const HotItem = () => {
 
   useEffect(() => {
     axios
-      .get(API.SELLERPRODUCT + `?order_by=order`)
+      .get(API.MAINSELLERPRODUCT + `?order_by=order`)
       .then(result => {
         sethotItem(result.data.item);
       })
@@ -31,7 +31,7 @@ const HotItem = () => {
                   src={item.image}
                   alt="prodctImage"
                   onClick={() => {
-                    history.push(`/product-detail/${item.id}/${item.name}`);
+                    history.push(`/product-detail/${item.id}`);
                   }}
                 />
                 {item.quantity === 0 && <SoldOutTag>매진</SoldOutTag>}
@@ -63,8 +63,7 @@ const SellerProductsBoxWrap = styled.div`
 `;
 
 const SellerProductsBox = styled.div`
-  margin-bottom: 70px;
-  margin-left: 6px;
+  margin: 20px 0 70px 0;
 `;
 
 const SellerProductsImageBox = styled.div`
@@ -81,7 +80,7 @@ const SellerProductsImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 15px;
   opacity: ${props => (props.isSoldOut ? 0.2 : 1)};
 `;
 

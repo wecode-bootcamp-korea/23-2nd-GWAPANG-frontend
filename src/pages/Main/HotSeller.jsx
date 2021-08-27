@@ -18,7 +18,7 @@ const HotSeller = () => {
         console.log(error.message);
       });
   }, []);
-
+  console.log(hotSeller);
   return (
     <SellerWrapper>
       {hotSeller?.map((item, index) => (
@@ -54,8 +54,14 @@ const SellerWrapper = styled.div`
 `;
 
 const SellerBox = styled.div`
-  margin-bottom: 30px;
-  margin-left: 7px;
+  margin: 20px 10px 70px 0;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 `;
 
 const SellerImg = styled.img`
@@ -81,6 +87,7 @@ const SellerNameBox = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 40px;
+  margin-top: 20px;
   padding-right: 10px;
 
   .fa-heart {

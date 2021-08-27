@@ -39,13 +39,18 @@ const SellerDetail = props => {
       <SellerInfoBox>
         <SellerTilteBox>
           <BackImage
-            src="images/angleLeft.png"
+            src="/images/angleLeft.png"
             alt="backIcon"
             onClick={() => history.goBack()}
           />
           <SellerTitle>{props.match.params.name}</SellerTitle>
         </SellerTilteBox>
-        <SellerImage></SellerImage>
+        <SellerImage>
+          <Image
+            alt="back"
+            src="https://i.pinimg.com/originals/6b/e6/61/6be661a1c8e439c90abf8854c2472279.jpg"
+          ></Image>
+        </SellerImage>
       </SellerInfoBox>
 
       <SellerTag tagFilter={tagFilter} />
@@ -54,11 +59,17 @@ const SellerDetail = props => {
   );
 };
 
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 const SellerInfoBox = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 25px;
+  margin-top: 80px;
 `;
 
 const BackImage = styled.img`

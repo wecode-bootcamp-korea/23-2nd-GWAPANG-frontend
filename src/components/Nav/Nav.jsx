@@ -5,50 +5,54 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
   const [log, setLog] = useState(false);
-  const [color, setColor] = useState({ color: 'grey' });
   const history = useHistory();
-  const logoutWithNav = () => {
-    if (localStorage.getItem('TOKEN')) {
-      localStorage.removeItem('TOKEN');
-      alert('다음에 또 방문해주세요.🍉');
-      setLog(!log);
-    } else {
-      console.log('error');
-    }
-  };
+
   const goToMain = () => {
     history.push('/');
   };
   const goToLogin = () => {
     history.push('/login');
   };
-  const goToCart = () => {
-    history.push('/cart');
+  const goToLogout = () => {
+    history.push('/logout');
   };
-  const goToSeller = () => {
-    history.push('/seller');
+  const goToUpload = () => {
+    history.push('/seller-upload');
+  };
+  const goToSellerList = () => {
+    history.push('/seller-list-main');
   };
   return (
     <NavWrapper>
       <NavInnerContainer>
         <MainLogo src="/images/GwapangLogo.png" alt="logo" onClick={goToMain} />
-        <MenuSelect type="radio" onClick={goToMain}>
-          홈
-        </MenuSelect>
-        <MenuSelect type="radio" onClick={goToSeller}>
+        <MenuSelect onClick={goToMain}>홈</MenuSelect>
+        <MenuUnSeleted type="radio" onClick={goToSellerList}>
           셀러
-        </MenuSelect>
+        </MenuUnSeleted>
         <IconContainer>
-          <IconUpload
-            src="https://s3.marpple.co/files/u_1396787/2021/5/original/d42ba6734d06cc9bf5c4f751d32fc6d370f1f4fc4.svg"
-            alt="uploadIcon"
-            onClick={goToCart}
-          />
-          <IconLogin
-            src="https://s3.marpple.co/files/u_1396787/2021/5/original/327c52e14972934562d9f11f2f0acc390f7306e18.svg"
-            alt="userIcon"
-            onClick={goToLogin}
-          />
+          {localStorage.getItem('TOKEN') ? (
+            <>
+              <IconUpload
+                src="https://s3.marpple.co/files/u_1396787/2021/5/original/d42ba6734d06cc9bf5c4f751d32fc6d370f1f4fc4.svg"
+                alt="uploadIcon"
+                onClick={goToUpload}
+              />
+              <IconLogout
+                src="https://image.flaticon.com/icons/png/128/4161/4161780.png"
+                alt="logoutIcon"
+                onClick={goToLogout}
+              />
+            </>
+          ) : (
+            <>
+              <IconLogin
+                src="https://s3.marpple.co/files/u_1396787/2021/5/original/327c52e14972934562d9f11f2f0acc390f7306e18.svg"
+                alt="loginIcon"
+                onClick={goToLogin}
+              />
+            </>
+          )}
         </IconContainer>
       </NavInnerContainer>
     </NavWrapper>
@@ -85,7 +89,7 @@ const MainLogo = styled.img`
     3 auto; */
 `;
 
-const MenuSelect = styled.div`
+const MenuSelect = styled.p`
   background-color: white;
   border: 0px;
   vertical-align: middle;
@@ -97,11 +101,14 @@ const MenuSelect = styled.div`
   padding-left: 30px;
   cursor: pointer;
 `;
-const MenuUnSeleted = styled.span`
+const MenuUnSeleted = styled.div`
+  background-color: white;
+  border: 0px;
+  vertical-align: middle;
   color: #a2a2a2;
-  font-size: 17px;
-  font-weight: 500;
-  padding-top: 6px;
+  font-size: 23px;
+  font-weight: 700;
+  padding-top: 5px;
   margin: auto 0;
   padding-left: 30px;
   cursor: pointer;
@@ -113,6 +120,13 @@ const IconLogin = styled.img`
 `;
 
 const IconUpload = styled.img`
+  margin-left: 25px;
+  cursor: pointer;
+`;
+
+const IconLogout = styled.img`
+  height: 25px;
+  width: 25px;
   margin-left: 25px;
   cursor: pointer;
 `;

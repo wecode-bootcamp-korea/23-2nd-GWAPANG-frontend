@@ -15,32 +15,18 @@ function Login(props) {
           },
         }).then(res => {
           alert('과즙팡팡🍒 과팡에 방문해주셔서 감사합니다.🍊');
-          localStorage.setItem('TOKEN', res.data.token);
+          console.log(res);
+          localStorage.setItem('TOKEN', res.data.TOKEN);
           props.history.push('/');
+          window.location.reload();
         });
       },
       fail: error => {
+        console.log('이것도???');
         alert('아이디, 비밀번호를 다시 확인해주세요.🍌');
         alert(JSON.stringify(error));
       },
     });
-  };
-
-  //로그아웃처리를 어떻게할지 아직 못정해서 일단 숨겨두었습니다.
-  const logoutWithKakao = () => {
-    if (window.Kakao.Auth.getAccessToken()) {
-      window.Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-          console.log(response);
-        },
-        fail: function (error) {
-          console.log(error);
-        },
-      });
-      alert('다음에 또 방문해주세요.🍉');
-      // window.Kakao.Auth.setAccessToken(undefined);
-    }
   };
 
   return (
@@ -72,14 +58,15 @@ function Login(props) {
           <span>카카오로 10초만에 시작하기</span>
         </KakaoLoginButton>
       </LoginContainer>
-      <LogoutSubmitBtn onClick={logoutWithKakao}></LogoutSubmitBtn>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+  margin-top: 100px;
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 `;
 
 const LoginContainer = styled.div`
@@ -166,6 +153,7 @@ const LoginSubmitBtn = styled.button`
 `;
 
 const LogoutSubmitBtn = styled.button`
+  opacity: 0;
   width: 10px;
   height: 10px;
 `;

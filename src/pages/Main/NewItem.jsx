@@ -30,7 +30,7 @@ const NewItem = () => {
                   src={item.image}
                   alt="prodctImage"
                   onClick={() => {
-                    history.push(`/product-detail/${item.id}/${item.name}`);
+                    history.push(`/product-detail/${item.id}`);
                   }}
                 />
                 {item.quantity === 0 && <SoldOutTag>매진</SoldOutTag>}
@@ -62,8 +62,7 @@ const SellerProductsBoxWrap = styled.div`
 `;
 
 const SellerProductsBox = styled.div`
-  margin-bottom: 70px;
-  margin-left: 6px;
+  margin: 20px 0 70px 0;
 `;
 
 const SellerProductsImageBox = styled.div`
