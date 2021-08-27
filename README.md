@@ -52,9 +52,24 @@
 #### 소진수
 
 - 업로드 페이지
+  - 업로드 페이지 html, css 제작
+  - S3 이미지 업로드 기능 구현 ( formdata를 이용한 이미지 업로드 )
+  - 업로드 이미지 삭제 기능 구현 ( splice와 깊은 복사를 활용한 삭제 기능 )
+  - 업로드 이미지 비리보기 기능 구현 ( blob 이미지를 활용한 미리보기 구현 )
+  - 글자 제한 기능 구현 ( useEffect를 활용한 글자 제한 구현 )
+
 - 업로드 수정 페이지
+  - 업로드 페이지 컴포넌트를 재활용하여 수정 페이지 제작
+
 - 상품 상세 페이지
+  - 구매 섹션 제작 ( 스티키 활용 ) 
+  - simple css animation 활용
+  - 상품 개수 제한 ( customHook 활용 )
+  - 리뷰 / 상품 정보 데이터 송수신 ( Axios.get/post 활용 )
+  - 리뷰 모달창 제작
+
 - 댓글 페이지
+  - 이미지 업로드 컴포넌트 재활용
 
 #### 황대웅
 
@@ -63,16 +78,14 @@
 - 프론트엔드 배포
 
 #### 이지선
-- NAV & Footer
-- 소셜 로그인 / 로그아웃
-  : 카카오 소셜 로그인 API (JavaScript SDK) 사용을 통한 소셜 로그인 기능 및 발행된 TOKEN으로 각 메뉴 진입 제약 구현
+
+- 로그인 / 로그아웃
+- NAV / Footer
 - 메인페이지
-  : Carousel 구현
-  : 리스트 필터링(최신 등록, 판매량, 재고량)을 통한 인기셀러, 신규셀러, 마감임박, 인기상품, 최신상품 서브메뉴 구현
 
-#### 최종 결과물
+#### 영상 결과물 ( 클릭 )
 
-  [![Video Label](http://img.youtube.com/vi/V38oqwMjnoI/0.jpg)](https://youtu.be/V38oqwMjnoI)
+[![영상 결과물](https://user-images.githubusercontent.com/79290170/131098377-6ed61921-ee6a-431c-97c8-bdd5fb5c796e.png)](https://youtu.be/-L_NpY3ExXc)
 
 ## Reference
 
