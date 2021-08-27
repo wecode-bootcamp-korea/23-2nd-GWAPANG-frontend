@@ -2,10 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { API } from '../../config';
 
 const stars = ['★', '★', '★', '★', '★'];
 
-function ProductReview({ setModal }) {
+function ProductReview(props) {
   const [imageUpload, setImageUpload] = useState([]);
   const [imagePreview, setImagePreview] = useState('');
   const [rate, setRate] = useState('');
@@ -23,7 +24,22 @@ function ProductReview({ setModal }) {
     Array.from(e.target.files).map(file => URL.revokeObjectURL(file));
   };
 
-  console.log(rate);
+  const handleUploadImage = e => {
+    const formData = new FormData();
+    for (let i = 0; i < imageUpload.length; i++) {
+      formData.append('images', imageUpload[i]);
+    }
+    formData.append('comment', comment);
+    formData.append('rate', rate);
+    const header = {
+      headers: {
+        Authorization: localStorage.getItem('TOKEN'),
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+    axios.post(`${API}/products?product_id=97`, formData, header);
+  };
+
   return (
     <BodyContainer>
       <ReviewContainer>
@@ -33,7 +49,7 @@ function ProductReview({ setModal }) {
             type="button"
             value="EXIT"
             onClick={() => {
-              setModal(0);
+              props.setModal(0);
             }}
           />
         </ReviewContainerTop>

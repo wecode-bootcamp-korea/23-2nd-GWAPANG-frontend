@@ -19,4 +19,6 @@ export const API = {
   SIGNIN: `${BASE_URL}/users/signin`,
 
   DETAIL: `${BASE_URL}/products`,
+  UPLOAD: `${BASE_URL}/products`,
+  REVIEW: `${BASE_URL}/reviews`,
 };
