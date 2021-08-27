@@ -1,7 +1,8 @@
 # 과팡 (마플샵, 번개장터를 모티브로 한 과일 판매 사이트)
 <div align="center"> 
-  <img alt="main" src="https://user-images.githubusercontent.com/79290170/129485664-93e1dafe-f31e-4baa-8ea8-eab834306aaa.png">
-  <br>
+  
+  ![Gwapang_logo](https://user-images.githubusercontent.com/79290170/131094347-a9404adc-28dd-418c-96ed-910539ea2556.png)
+  
   <br>
 </div>
 
