@@ -16,7 +16,7 @@ function Login(props) {
         }).then(res => {
           alert('과즙팡팡🍒 과팡에 방문해주셔서 감사합니다.🍊');
           console.log(res);
-          localStorage.setItem('TOKEN', res.data.token);
+          localStorage.setItem('TOKEN', res.data.TOKEN);
           props.history.push('/');
           window.location.reload();
         });

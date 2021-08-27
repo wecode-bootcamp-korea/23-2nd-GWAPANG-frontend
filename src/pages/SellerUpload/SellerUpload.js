@@ -47,7 +47,9 @@ function SellerUpload(props) {
         'Content-Type': 'multipart/form-data',
       },
     };
-    axios.post(`${API.UPLOAD}`, formData, header);
+    axios.post(`${API.UPLOAD}`, formData, header).then(res => {
+      props.history.push(`/products/${res.data.PRODUCT_ID}`);
+    });
     alert('업로드가 완료되었습니다.');
   };
 
@@ -72,7 +74,6 @@ function SellerUpload(props) {
       .catch(err => console.log(err));
   }, []);
 
-  console.log(imageForUpload);
   return (
     <SellerUploadSection>
       <InfoHeader>
