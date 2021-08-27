@@ -18,7 +18,7 @@ const HotSeller = () => {
         console.log(error.message);
       });
   }, []);
-
+  console.log(hotSeller);
   return (
     <SellerWrapper>
       {hotSeller?.map((item, index) => (
@@ -50,6 +50,7 @@ const SellerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: space-between;
 `;
 
 const SellerBox = styled.div`

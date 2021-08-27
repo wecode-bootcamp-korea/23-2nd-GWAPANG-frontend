@@ -9,7 +9,7 @@ const ImminentItem = () => {
   const history = useHistory();
   useEffect(() => {
     axios
-      .get(API.SELLERPRODUCT + `?order_by=stock`)
+      .get(API.MAINSELLERPRODUCT + `?order_by=stock`)
       .then(result => {
         setimminentItem(result.data.item);
       })
@@ -58,16 +58,20 @@ const SellerProductsBoxWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: space-between;
 `;
 
 const SellerProductsBox = styled.div`
-  margin: 20px 10px 70px 0;
+  margin-bottom: 70px;
+  margin-left: 6px;
+  margin-top: 20px;
 `;
 
 const SellerProductsImageBox = styled.div`
   position: relative;
   width: 232px;
   height: 232px;
+
   :hover {
     cursor: pointer;
     border: 3px solid white;
@@ -78,7 +82,7 @@ const SellerProductsImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 15px;
   opacity: ${props => (props.isSoldOut ? 0.2 : 1)};
 `;
 

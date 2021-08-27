@@ -28,7 +28,7 @@ const SellerTag = ({ sellerList, tagFilter }) => {
                 // handleTagInit();
               }}
               // ref={item.ref}
-              checked={tagInit === item.value}
+              checked={tagInit === item.value ? true : null}
             />
             <TagLabel for={item.tagId}>
               {item.svgName}

@@ -10,7 +10,7 @@ const HotItem = () => {
 
   useEffect(() => {
     axios
-      .get(API.SELLERPRODUCT + `?order_by=order`)
+      .get(API.MAINSELLERPRODUCT + `?order_by=order`)
       .then(result => {
         sethotItem(result.data.item);
       })
@@ -59,11 +59,11 @@ const SellerProductsBoxWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 `;
 
 const SellerProductsBox = styled.div`
-  margin: 20px 5rem 70px 0;
+  margin: 20px 0 70px 0;
 `;
 
 const SellerProductsImageBox = styled.div`
@@ -80,7 +80,7 @@ const SellerProductsImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 15px;
   opacity: ${props => (props.isSoldOut ? 0.2 : 1)};
 `;
 
