@@ -18,6 +18,7 @@ function Login(props) {
           console.log(res);
           localStorage.setItem('TOKEN', res.data.token);
           props.history.push('/');
+          window.location.reload();
         });
       },
       fail: error => {
@@ -26,23 +27,6 @@ function Login(props) {
         alert(JSON.stringify(error));
       },
     });
-  };
-
-  //로그아웃처리를 어떻게할지 아직 못정해서 일단 숨겨두었습니다.
-  const logoutWithKakao = () => {
-    if (window.Kakao.Auth.getAccessToken()) {
-      window.Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-          console.log(response);
-        },
-        fail: function (error) {
-          console.log(error);
-        },
-      });
-      alert('다음에 또 방문해주세요.🍉');
-      // window.Kakao.Auth.setAccessToken(undefined);
-    }
   };
 
   return (
@@ -74,7 +58,6 @@ function Login(props) {
           <span>카카오로 10초만에 시작하기</span>
         </KakaoLoginButton>
       </LoginContainer>
-      <LogoutSubmitBtn onClick={logoutWithKakao}></LogoutSubmitBtn>
     </Wrapper>
   );
 }

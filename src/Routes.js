@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Login from './components/Nav/Login/Login';
+import Logout from './components/Nav/Login/Logout';
 import Main from './pages/Main/Main';
 import SellerListMain from './pages/SellerListMain/SellerListMain';
 import SellerDetail from './pages/SellerDetail/SellerDetail';
@@ -20,6 +21,7 @@ class Routes extends React.Component {
           <Route exact path="/" component={Main} />
           <Route exact path="/seller-list-main" component={SellerListMain} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/logout" component={Logout} />
           <Route exact path="/product-review" component={ProductReview} />
           <Route exact path="/seller-list-main" component={SellerListMain} />
           <Route exact path="/seller-upload" component={SellerUpload} />
