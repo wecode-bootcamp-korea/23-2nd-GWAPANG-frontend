@@ -3,14 +3,17 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { API } from '../../config';
+import { useHistory } from 'react-router-dom';
 
 const stars = ['★', '★', '★', '★', '★'];
 
 function ProductReview(props) {
+  const { id } = props;
   const [imageUpload, setImageUpload] = useState([]);
   const [imagePreview, setImagePreview] = useState('');
-  const [rate, setRate] = useState('');
+  const [rate, setRate] = useState(5);
   const [comment, setComment] = useState();
+  const history = useHistory();
 
   const handleImageAdd = e => {
     const imageArray = Array.from(e.target.files).map(file =>
@@ -27,19 +30,22 @@ function ProductReview(props) {
   const handleUploadImage = e => {
     const formData = new FormData();
     for (let i = 0; i < imageUpload.length; i++) {
-      formData.append('images', imageUpload[i]);
+      formData.append('image', imageUpload[i]);
     }
-    formData.append('comment', comment);
-    formData.append('rate', rate);
+    formData.append('content', comment);
+    formData.append('grade', rate);
     const header = {
       headers: {
         Authorization: localStorage.getItem('TOKEN'),
         'Content-Type': 'multipart/form-data',
       },
     };
-    axios.post(`${API}/products?product_id=97`, formData, header);
+    axios.post(`${API.REVIEW}/${id}`, formData, header);
+    window.location.reload();
+    props.setModal(0);
   };
 
+  console.log(rate);
   return (
     <BodyContainer>
       <ReviewContainer>
@@ -65,16 +71,13 @@ function ProductReview(props) {
           </ReviewLeft>
           <ReviewRight>
             <Rate>
-              {stars.map((star, index) => (
-                <EmptyStar key={index + 1}>{star}</EmptyStar>
-              ))}
               <StarContainer>
                 {stars.map((star, index) => (
                   <ColorStar
-                    onMouseOver={e => {
-                      setRate(e.target.key);
+                    onClick={e => {
+                      alert(`5점으로 평가되었습니다`);
                     }}
-                    key={index + 1}
+                    key={index}
                   >
                     {star}
                   </ColorStar>
@@ -87,7 +90,7 @@ function ProductReview(props) {
                 setComment(e.target.value);
               }}
             ></Comment>
-            <Upload type="button" value="UPLOAD" />
+            <Upload type="button" value="UPLOAD" onClick={handleUploadImage} />
           </ReviewRight>
         </ReviewContainerBot>
       </ReviewContainer>
@@ -105,6 +108,7 @@ const StarContainer = styled.div`
 const ColorStar = styled.div`
   z-index: 10;
   color: green;
+  cursor: pointer;
 `;
 
 const EmptyStar = styled.div`
@@ -126,6 +130,7 @@ const Comment = styled.textarea`
 `;
 
 const UploadImage = styled.input`
+  object-fit: cover;
   position: absolute;
   width: 100%;
   height: 100%;

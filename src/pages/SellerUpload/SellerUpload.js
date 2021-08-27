@@ -104,7 +104,7 @@ function SellerUpload(props) {
             value={title}
           />
           <CountWord>{title && title.length} / 40</CountWord>
-          <InvalidNameList href="/">
+          <InvalidNameList href="https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=25&ccfNo=1&cciNo=1&cnpClsNo=3">
             <u>거래금지 품목</u>
           </InvalidNameList>
         </InputNameContainer>

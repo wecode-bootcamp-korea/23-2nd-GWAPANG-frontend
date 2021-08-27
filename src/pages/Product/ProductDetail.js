@@ -5,15 +5,14 @@ import axios from 'axios';
 import ProductReview from './ProdcutReview';
 import { API } from '../../../src/config';
 
-const origin = { DOMESTIC: '국내산', IMPORTED: '수입산' };
-const storage = { 1: '냉장', 2: '냉동', 3: '건조' };
-
 function ProductDetail(props) {
   const { id } = props.match.params;
   const [stock, setstock] = useState('');
   const [productInfo, setProductInfo] = useState('story');
   const [data, setData] = useState({});
+  const [review, setReview] = useState([]);
   const [modal, setModal] = useState('');
+  const [reviewData, setReviewData] = useState('');
 
   const handleProductInfo = e => {
     setProductInfo(e.target.id);
@@ -23,10 +22,12 @@ function ProductDetail(props) {
     axios
       .get(`${API.DETAIL}/${id}`)
       .then(result => {
-        console.log(result.data.RESULT[0]);
         setData(result.data.RESULT[0]);
       })
       .catch(err => console.log(err));
+    axios.get(`${API.REVIEW}/${id}/comment`).then(result => {
+      setReview(result.data.RESULT);
+    });
   }, []);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ function ProductDetail(props) {
     return data.product_price * stock;
   };
 
+  console.log(review);
   return (
     <>
       <BodyContainer>
@@ -68,16 +70,20 @@ function ProductDetail(props) {
           </Menu>
           {productInfo === 'story' && (
             <ProductDesc>
-              {data.image?.map((item, index) => (
-                <ReviewContainer order={index}>
+              {review?.map((item, index) => (
+                <ReviewContainer>
                   <ReviewImage
                     alt="reviewImage"
-                    src={item.url}
-                    key={index}
+                    src={item.review_image}
+                    key={item.review_id}
+                    onClick={e => {
+                      setModal(2);
+                      setReviewData(review.review_id);
+                    }}
                   ></ReviewImage>
                   <RateContainer>
-                    <ReviewId>{item.user_id}</ReviewId>
-                    <Rate>{'★'.repeat(item.rate)}</Rate>
+                    <ReviewId>{item.review_writer}</ReviewId>
+                    <Rate>{'★'.repeat(item.grade)}</Rate>
                   </RateContainer>
                 </ReviewContainer>
               ))}
@@ -130,7 +136,9 @@ function ProductDetail(props) {
           </DetailSection>
         </DetailForm>
       </BodyContainer>
-      {modal === 1 && <ProductReview setModal={setModal} />}
+      {modal === 1 && (
+        <ProductReview id={id} setModal={setModal}></ProductReview>
+      )}
     </>
   );
 }
@@ -141,13 +149,14 @@ const RateContainer = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const ReviewContainer = styled.div`
   position: relatvie;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  max-width: 50%;
   border: 8px solid #fafafa;
   height: 100%;
 `;
@@ -299,11 +308,11 @@ const ShopBtn = styled(Title.withComponent('div'))`
 `;
 
 const ProductDesc = styled.div`
+  flex-wrap: wrap;
   padding: 20px;
   background-color: #fafafa;
   margin-top: 15px;
   display: flex;
-  flex-flow: column wrap;
 `;
 
 const Menu = styled.div`
@@ -384,7 +393,9 @@ const BodyContainer = styled.div`
   max-width: 1360px;
 `;
 
-const ProdcutSection = styled.section``;
+const ProdcutSection = styled.section`
+  width: 739.156px;
+`;
 
 const DetailSection = styled.div`
   position: sticky;
